@@ -8,7 +8,7 @@
     <file path="/Ling.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382792054292" ignored="false" />
     <file path="/kNN.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382815137622" ignored="false" />
     <file path="/Tutorial.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382794183193" ignored="false" />
-    <file path="/CrossValidator.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382821930465" ignored="false" />
+    <file path="/CrossValidator.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382824801196" ignored="false" />
     <file path="/DataFilters.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382818341147" ignored="false" />
     <file path="/CrossValidatorBenchmark.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382824246559" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -80,10 +80,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CrossValidatorBenchmark.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="CrossValidatorBenchmark.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorBenchmark.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="10" selection-start="380" selection-end="380" vertical-scroll-proportion="0.4173913">
+            <state line="16" column="10" selection-start="380" selection-end="380" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -98,10 +98,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CrossValidator.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="CrossValidator.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="38" selection-start="2592" selection-end="2592" vertical-scroll-proportion="0.0">
+            <state line="93" column="47" selection-start="2699" selection-end="2699" vertical-scroll-proportion="0.5089286">
               <folding />
             </state>
           </provider>
@@ -125,8 +125,8 @@
         <option value="$PROJECT_DIR$/src/edu/nyuad/svm/DataPreprocessor.java" />
         <option value="$PROJECT_DIR$/src/edu/nyuad/svm/DataFilters.java" />
         <option value="$PROJECT_DIR$/src/edu/nyuad/svm/Main.java" />
-        <option value="$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidator.java" />
         <option value="$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorBenchmark.java" />
+        <option value="$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidator.java" />
       </list>
     </option>
   </component>
@@ -478,16 +478,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidator.java">
+    <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorBenchmark.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="38" selection-start="2592" selection-end="2592" vertical-scroll-proportion="0.0">
+        <state line="16" column="10" selection-start="380" selection-end="380" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorBenchmark.java">
+    <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="10" selection-start="380" selection-end="380" vertical-scroll-proportion="0.4173913">
+        <state line="93" column="47" selection-start="2699" selection-end="2699" vertical-scroll-proportion="0.5089286">
           <folding />
         </state>
       </provider>
