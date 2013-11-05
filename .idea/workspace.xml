@@ -8,7 +8,7 @@
     <file path="/Ling.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382792054292" ignored="false" />
     <file path="/kNN.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382815137622" ignored="false" />
     <file path="/Tutorial.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382794183193" ignored="false" />
-    <file path="/CrossValidator.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1383683459634" ignored="false" />
+    <file path="/CrossValidator.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1383684477081" ignored="false" />
     <file path="/DataFilters.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382818341147" ignored="false" />
     <file path="/CrossValidatorBenchmark.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382824246559" ignored="false" />
     <file path="/standardDeviationEditing.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1383683290273" ignored="false" />
@@ -73,20 +73,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="0" selection-start="989" selection-end="1070" vertical-scroll-proportion="1.0053191">
+            <state line="27" column="0" selection-start="989" selection-end="1070" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CrossValidator.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="CrossValidator.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="64" selection-start="2571" selection-end="2571" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="97" column="20" selection-start="2933" selection-end="2933" vertical-scroll-proportion="0.33333334">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -367,7 +369,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="25" width="1372" height="745" extended-state="7" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="97" y="125" width="1172" height="545" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -378,13 +380,13 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32888147" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32888147" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2496136" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24924242" sideWeight="0.67111856" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32888147" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24924242" sideWeight="0.67111856" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32888147" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -547,17 +549,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidator.java">
+    <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="64" selection-start="2571" selection-end="2571" vertical-scroll-proportion="0.0">
+        <state line="27" column="0" selection-start="989" selection-end="1070" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="989" selection-end="1070" vertical-scroll-proportion="1.0053191">
-          <folding />
+        <state line="97" column="20" selection-start="2933" selection-end="2933" vertical-scroll-proportion="0.33333334">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

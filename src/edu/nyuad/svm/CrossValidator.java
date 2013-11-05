@@ -26,16 +26,11 @@ public class CrossValidator {
     private double[] accuracy = new double[10];
     private Classifier classifier;
     private Instances data;
+    private String type;
 
     public CrossValidator(String selectedType, Instances testData) {
         // build the classifier
-        if (selectedType == "kNN") {
-            classifier = getkNNClassifier();
-        } else if (selectedType == "SMO") {
-            classifier = getSMOClassifier();
-        } else {
-            classifier = getkNNClassifier();
-        }
+        type = selectedType;
         data = testData;
         data.stratify(10);
     }
@@ -88,19 +83,37 @@ public class CrossValidator {
         return mean / nums.length;
     }
 
-    public Evaluation singleValidate(int fold) throws Exception{
-        Instances train = data.trainCV(10, fold);
-        Instances test = data.testCV(10, fold);
-
+    public void trainValidator(Classifier classifier, Instances train) throws Exception{
 //            long startTrain = System.nanoTime();
         classifier.buildClassifier(train);
 //            trainingTimes[i] = System.nanoTime() - startTrain;
+    }
 
+    public Evaluation evaluateValidator(Instances data, Classifier classifier) throws Exception{
         // perform cross-validation
         Evaluation eval = new Evaluation(data);
 //            long startTest = System.nanoTime();
-        eval.evaluateModel(classifier, test);
+        eval.evaluateModel(classifier, data);
 //            testingTimes[i] = System.nanoTime() - startTest;
+        return eval;
+    }
+
+    public Evaluation singleValidate(int fold) throws Exception{
+        Classifier classifier;
+        Instances train = data.trainCV(10, fold);
+        Instances test = data.testCV(10, fold);
+
+        if (type == "kNN") {
+            classifier = getkNNClassifier();
+        } else if (type == "SMO") {
+            classifier = getSMOClassifier();
+        } else {
+            classifier = getkNNClassifier();
+        }
+
+        trainValidator(classifier, train);
+        Evaluation eval = evaluateValidator(data, classifier);
+
         return eval;
     }
 
