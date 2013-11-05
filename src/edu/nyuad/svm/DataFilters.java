@@ -12,23 +12,41 @@ import weka.filters.unsupervised.instance.RemovePercentage;
  * Written by Lingliang Zhang
  */
 public class DataFilters {
-    private Instances data;
+    public Instances oldData;
+    public Instances newData;
 
     public DataFilters(String filename) throws Exception{
-        data = readData(filename);
+        oldData = readData(filename);
     }
 
     public Instances getData() {
-        return data;
+        return oldData;
+    }
+
+    public void noFilter() {
+        newData = oldData;
+    }
+
+    public void percentageFilter(double percentage) throws Exception {
+        newData = removePercentage(percentage);
     }
 
     public Instances removePercentage(double percentage) throws Exception{
-        System.out.println(data.numInstances());
         RemovePercentage remove = new RemovePercentage();
         remove.setPercentage(percentage);
-        remove.setInputFormat(data);
-        Instances newData = Filter.useFilter(data, remove);
-        System.out.println(newData.numInstances());
+        remove.setInputFormat(oldData);
+        Instances newData = Filter.useFilter(oldData, remove);
+        return newData;
+    }
+
+    public void gaussianFilter() throws Exception {
+        newData = removeGaussian();
+    }
+
+    public Instances removeGaussian() throws Exception {
+        GaussianFilter gaussianFilter = new GaussianFilter();
+        gaussianFilter.setInputFormat(oldData);
+        Instances newData = Filter.useFilter(oldData, gaussianFilter);
         return newData;
     }
 

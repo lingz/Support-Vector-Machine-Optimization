@@ -1,15 +1,12 @@
 package edu.nyuad.svm;
 
-import weka.core.Attribute;
 import weka.core.Capabilities;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.filters.SimpleBatchFilter;
-import weka.experiment.Stats;
 
-import java.util.HashMap;
-import java.util.Iterator;
-
+import java.util.Random;
+import java.util.Stack;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,7 +15,7 @@ import java.util.Iterator;
  * Time: 10:25 PM
  * To change this template use File | Settings | File Templates.
  */
-public class standardDeviationEditing extends SimpleBatchFilter{
+public class GaussianFilter extends SimpleBatchFilter{
     @Override
     public String globalInfo() {
         return "Probabilistically removes points proportional to their standard deviations away from the mean of their class";
@@ -38,14 +35,44 @@ public class standardDeviationEditing extends SimpleBatchFilter{
         int numInstances = instances.numInstances();
         int numAttributes = instances.numAttributes();
         int classIndex = instances.classIndex();
-        Iterator<Double> classItr = statsMap.classMap.keySet().iterator();
-        Double classVal;
+        int removeCount = 0;
+        Random random = new Random();
+        Stack<Integer> toRemove = new Stack<Integer>();
         // iterate over the instances
+        Instance instance;
+        Double classVal;
+        Double[] gaussianVals;
         for (int i=0; i < numInstances; i++) {
+            instance = instances.get(i);
+            classVal = instance.classValue();
+            Double removeProbability = 0.0;
+            // iterate over each instances attributes
+            for (int j=0; j < numAttributes; j++) {
+                gaussianVals = statsMap.getClassAttributeGaussian(classVal, j);
+                // skip the actual class
+                if (j == classIndex) {
+                    continue;
+                }
+                // add up the remove probabilities
+                removeProbability += Gaussian.phi(instance.value(j), gaussianVals[0], gaussianVals[1]) /
+                        gaussianVals[2];
 
+            }
+            // take the average of the removeProbabilities
+            removeProbability /= numAttributes;
+//            System.out.println(removeProbability);
+            // probabilitistically add the instance to the remove stack
+            if (removeProbability > random.nextDouble()) {
+                toRemove.push(i);
+                removeCount += 1;
+            }
+        }
+        // delete the instances in reverse order
+        while (!toRemove.empty()) {
+            instances.delete(toRemove.pop());
         }
 
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return instances;
     }
 
     @Override
@@ -69,6 +96,11 @@ public class standardDeviationEditing extends SimpleBatchFilter{
         }
         Instances data = dataset.getData();
         StatsMap statsMap = new StatsMap(data);
-        System.out.println(statsMap.statsMap);
+        GaussianFilter test = new GaussianFilter();
+        try {
+            test.process(data);
+        } catch (Exception e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
     }
 }

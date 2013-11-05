@@ -65,4 +65,8 @@ public class Gaussian {
         else              return PhiInverse(y, delta, mid, hi);
     }
 
+    public static void main(String[] args) {
+        System.out.println(Gaussian.phi(1, 5, 1));
+    }
+
 }

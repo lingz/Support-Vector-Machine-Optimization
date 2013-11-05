@@ -26,12 +26,16 @@ public class CrossValidator {
     private double[] accuracy = new double[10];
     private Classifier classifier;
     private Instances data;
+    private int oldDataCount;
+    private int newDataCount;
     private String type;
 
-    public CrossValidator(String selectedType, Instances testData) {
+    public CrossValidator(String selectedType, DataFilters testData) {
         // build the classifier
         type = selectedType;
-        data = testData;
+        data = testData.newData;
+        oldDataCount = testData.oldData.numInstances();
+        newDataCount = testData.newData.numInstances();
         data.stratify(10);
     }
 
@@ -118,6 +122,10 @@ public class CrossValidator {
     }
 
     public void crossValidate(String filename) throws Exception {
+        crossValidate(filename, "");
+    }
+
+    public void crossValidate(String filename, String output) throws Exception {
         // split into 10 folds
 
         Classifier classifier;
@@ -128,8 +136,6 @@ public class CrossValidator {
         }
 
 
-        String output = "";
-
         output += String.format("Cross Validation results for %s", filename) + "\n";
         output += "Instance\tAccuracy" + "\n";
         for (int i = 0; i < 10; i++) {
@@ -139,6 +145,8 @@ public class CrossValidator {
 //                    Long.toString(trainingTimes[i]), Long.toString(testingTimes[i])));
         }
         output += "== Summary ==" + "\n";
+        output += String.format("Original Instances: \t%d", oldDataCount) + "\n";
+        output += String.format("New Instances: \t%d", newDataCount) + "\n";
         output += String.format("Mean Accuracy: \t\t\t\t\t\t\t%s", Double.toString(getMean(accuracy))) + "\n";
         output += String.format("Variace of Accuracy: \t\t\t\t\t%s", Double.toString(getVariance(accuracy))) + "\n";
         output += String.format("Standard Deviation of Accuracy: \t%s", Double.toString(Math.sqrt(getVariance(accuracy)))) + "\n";
