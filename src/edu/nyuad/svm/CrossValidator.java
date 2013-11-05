@@ -112,7 +112,7 @@ public class CrossValidator {
         }
 
         trainValidator(classifier, train);
-        Evaluation eval = evaluateValidator(data, classifier);
+        Evaluation eval = evaluateValidator(test, classifier);
 
         return eval;
     }

@@ -8,7 +8,7 @@
     <file path="/Ling.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382792054292" ignored="false" />
     <file path="/kNN.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382815137622" ignored="false" />
     <file path="/Tutorial.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382794183193" ignored="false" />
-    <file path="/CrossValidator.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1383684477081" ignored="false" />
+    <file path="/CrossValidator.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1383684556110" ignored="false" />
     <file path="/DataFilters.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382818341147" ignored="false" />
     <file path="/CrossValidatorBenchmark.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382824246559" ignored="false" />
     <file path="/standardDeviationEditing.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1383683290273" ignored="false" />
@@ -85,7 +85,7 @@
       <file leaf-file-name="CrossValidator.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="97" column="20" selection-start="2933" selection-end="2933" vertical-scroll-proportion="0.33333334">
+            <state line="114" column="48" selection-start="3455" selection-end="3455" vertical-scroll-proportion="0.5785124">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -380,7 +380,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32888147" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32888147" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2496136" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -558,7 +558,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="20" selection-start="2933" selection-end="2933" vertical-scroll-proportion="0.33333334">
+        <state line="114" column="48" selection-start="3455" selection-end="3455" vertical-scroll-proportion="0.5785124">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
