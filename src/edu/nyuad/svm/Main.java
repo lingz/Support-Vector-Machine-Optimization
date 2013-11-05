@@ -16,18 +16,26 @@ public class Main {
 
         DataFilters dataset = new DataFilters(filepath);
 
-        CrossValidator kNN = new CrossValidator("kNN", dataset.getData());
+        dataset.noFilter();
+        CrossValidator kNN = new CrossValidator("kNN", dataset);
         kNN.crossValidate(filename + "-kNN-nofilter");
-        CrossValidator smo = new CrossValidator("SMO", dataset.getData());
+        CrossValidator smo = new CrossValidator("SMO", dataset);
         smo.crossValidate(filename + "-SMO-nofilter");
 
 
         for (double percentage = 10; percentage <= 90; percentage += 10) {
-            kNN = new CrossValidator("kNN", dataset.removePercentage(percentage));
+            dataset.percentageFilter(percentage);
+            kNN = new CrossValidator("kNN", dataset);
             kNN.crossValidate(filename + "-kNN-removeRandom-" + percentage);
-            smo = new CrossValidator("SMO", dataset.removePercentage(percentage));
+            smo = new CrossValidator("SMO", dataset);
             smo.crossValidate(filename + "-SMO-removeRandom-" + percentage);
         }
+
+        dataset.gaussianFilter();
+        kNN = new CrossValidator("kNN", dataset);
+        kNN.crossValidate(filename + "-kNN-gaussian");
+        smo = new CrossValidator("SMO", dataset);
+        smo.crossValidate(filename + "-SMO-gaussian");
 
 
     }

@@ -1,6 +1,9 @@
 package edu.nyuad.svm;
 
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import weka.classifiers.Classifier;
 import weka.core.Instances;
 
@@ -21,6 +24,8 @@ import static com.google.common.collect.ObjectArrays.concat;
  * To change this template use File | Settings | File Templates.
  */
 public class CrossValidatorBenchmark{
+    private static final Pattern fileNamePattern = Pattern.compile(".*?([^/]+)\\.arff");
+
 	
 	Classifier classifier;
 	@Param({
@@ -45,10 +50,19 @@ public class CrossValidatorBenchmark{
 	Instances test;
 	
 	@BeforeExperiment public void setUp() throws Exception{
+		
 		String filepath = "data/ling.arff";
+        Matcher match = fileNamePattern.matcher(filepath);
+        match.matches();
+        String filename = match.group(1);
+
         DataFilters dataset = new DataFilters(filepath);
-        CrossValidator kNN = new CrossValidator("kNN", dataset.getData());
-        CrossValidator smo = new CrossValidator("SMO", dataset.getData());
+
+        dataset.noFilter();
+        CrossValidator kNN = new CrossValidator("kNN", dataset);
+        kNN.crossValidate(filename + "-kNN-nofilter");
+        CrossValidator smo = new CrossValidator("SMO", dataset);
+        smo.crossValidate(filename + "-SMO-nofilter");
     
         if (type == "kNN") {
         	train = kNN.data.trainCV(10, fold);
