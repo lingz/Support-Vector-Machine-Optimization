@@ -16,16 +16,19 @@ public class Main {
 
         DataFilters dataset = new DataFilters(filepath);
 
-        CrossValidator kNN = new CrossValidator("kNN");
-        kNN.crossValidate(dataset.getData(), filename + "-kNN-nofilter");
-        CrossValidator smo = new CrossValidator("SMO");
-        smo.crossValidate(dataset.getData(), filename + "-SMO-nofilter");
+        CrossValidator kNN = new CrossValidator("kNN", dataset.getData());
+        kNN.crossValidate(filename + "-kNN-nofilter");
+        CrossValidator smo = new CrossValidator("SMO", dataset.getData());
+        smo.crossValidate(filename + "-SMO-nofilter");
 
 
         for (double percentage = 10; percentage <= 90; percentage += 10) {
-            kNN.crossValidate(dataset.removePercentage(percentage), filename + "-kNN-removeRandom-" + percentage);
-            smo.crossValidate(dataset.removePercentage(percentage), filename + "-SMO-removeRandom-" + percentage);
+            kNN = new CrossValidator("kNN", dataset.removePercentage(percentage));
+            kNN.crossValidate(filename + "-kNN-removeRandom-" + percentage);
+            smo = new CrossValidator("SMO", dataset.removePercentage(percentage));
+            smo.crossValidate(filename + "-SMO-removeRandom-" + percentage);
         }
+
 
     }
 }

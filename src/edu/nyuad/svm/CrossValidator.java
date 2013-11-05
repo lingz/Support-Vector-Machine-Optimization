@@ -25,9 +25,12 @@ public class CrossValidator {
 //    private long[] testingTimes = new long[10];
     private double[] accuracy = new double[10];
     private String type;
+    private Instances data;
 
-    public CrossValidator(String selectedType) {
+    public CrossValidator(String selectedType, Instances testData) {
         type = selectedType;
+        data = testData;
+        data.stratify(10);
     }
 
     // Instantiate the classifier
@@ -78,11 +81,13 @@ public class CrossValidator {
         return mean / nums.length;
     }
 
-    public Double testValidate(Instances data, int fold) throws Exception{
-        data.stratify(10);
+    public Evaluation singleValidate(int fold) throws Exception{
         Classifier classifier;
         Instances train = data.trainCV(10, fold);
         Instances test = data.testCV(10, fold);
+
+        // copy and build the classifier
+
         if (type == "kNN") {
             classifier = getkNNClassifier();
         } else if (type == "SMO") {
@@ -90,41 +95,27 @@ public class CrossValidator {
         } else {
             classifier = getkNNClassifier();
         }
-        classifier.buildClassifier(train);
-        Evaluation eval = new Evaluation(data);
-        eval.evaluateModel(classifier, test);
-        return eval.errorRate();
-    }
-
-    public void crossValidate(Instances data, String filename) throws Exception {
-        // split into 10 folds
-        data.stratify(10);
-        Classifier classifier;
-        for (int i = 0; i < 10; i++) {
-            // generate the training and test data
-            Instances train = data.trainCV(10, i);
-            Instances test = data.testCV(10, i);
-
-            // copy and build the classifier
-
-            if (type == "kNN") {
-                classifier = getkNNClassifier();
-            } else if (type == "SMO") {
-                classifier = getSMOClassifier();
-            } else {
-                classifier = getkNNClassifier();
-            }
 
 //            long startTrain = System.nanoTime();
-            classifier.buildClassifier(train);
+        classifier.buildClassifier(train);
 //            trainingTimes[i] = System.nanoTime() - startTrain;
 
-            // perform cross-validation
-            Evaluation eval = new Evaluation(data);
+        // perform cross-validation
+        Evaluation eval = new Evaluation(data);
 //            long startTest = System.nanoTime();
-            eval.evaluateModel(classifier, test);
+        eval.evaluateModel(classifier, test);
 //            testingTimes[i] = System.nanoTime() - startTest;
-            accuracy[i] = 1 - eval.errorRate();
+        return eval;
+    }
+
+    public void crossValidate(String filename) throws Exception {
+        // split into 10 folds
+
+        Classifier classifier;
+        Evaluation results;
+        for (int i = 0; i < 10; i++) {
+            results = singleValidate(i);
+            accuracy[i] = 1 - results.errorRate();
         }
 
 
@@ -141,7 +132,7 @@ public class CrossValidator {
         output += "== Summary ==" + "\n";
         output += String.format("Mean Accuracy: \t\t\t\t\t\t\t%s", Double.toString(getMean(accuracy))) + "\n";
         output += String.format("Variace of Accuracy: \t\t\t\t\t%s", Double.toString(getVariance(accuracy))) + "\n";
-        output += String.format("Standard Deviation of Accuracy Time: \t%s", Double.toString(Math.sqrt(getVariance(accuracy)))) + "\n";
+        output += String.format("Standard Deviation of Accuracy: \t%s", Double.toString(Math.sqrt(getVariance(accuracy)))) + "\n";
 //        System.out.println(String.format("Mean Training Time: \t\t\t\t\t%s", Long.toString(getMean(trainingTimes))));
 //        System.out.println(String.format("Variace of Training Time: \t\t\t\t%s", Long.toString(getVariance(trainingTimes))));
 //        System.out.println(String.format("Standard Deviation of Training Time: \t%s", Double.toString(Math.sqrt(getVariance(trainingTimes)))));
