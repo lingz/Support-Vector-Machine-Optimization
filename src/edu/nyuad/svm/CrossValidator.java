@@ -24,11 +24,18 @@ public class CrossValidator {
 //    private long[] trainingTimes = new long[10];
 //    private long[] testingTimes = new long[10];
     private double[] accuracy = new double[10];
-    private String type;
+    private Classifier classifier;
     private Instances data;
 
     public CrossValidator(String selectedType, Instances testData) {
-        type = selectedType;
+        // build the classifier
+        if (selectedType == "kNN") {
+            classifier = getkNNClassifier();
+        } else if (selectedType == "SMO") {
+            classifier = getSMOClassifier();
+        } else {
+            classifier = getkNNClassifier();
+        }
         data = testData;
         data.stratify(10);
     }
@@ -82,19 +89,8 @@ public class CrossValidator {
     }
 
     public Evaluation singleValidate(int fold) throws Exception{
-        Classifier classifier;
         Instances train = data.trainCV(10, fold);
         Instances test = data.testCV(10, fold);
-
-        // copy and build the classifier
-
-        if (type == "kNN") {
-            classifier = getkNNClassifier();
-        } else if (type == "SMO") {
-            classifier = getSMOClassifier();
-        } else {
-            classifier = getkNNClassifier();
-        }
 
 //            long startTrain = System.nanoTime();
         classifier.buildClassifier(train);

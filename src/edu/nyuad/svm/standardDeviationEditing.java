@@ -35,16 +35,15 @@ public class standardDeviationEditing extends SimpleBatchFilter{
     protected Instances process(Instances instances) throws Exception {
         // Generate the stats map
         StatsMap statsMap = new StatsMap(instances);
+        int numInstances = instances.numInstances();
         int numAttributes = instances.numAttributes();
         int classIndex = instances.classIndex();
-        // Iterate over the classes
         Iterator<Double> classItr = statsMap.classMap.keySet().iterator();
         Double classVal;
-        while (classItr.hasNext()) {
-            classVal = classItr.next();
+        // iterate over the instances
+        for (int i=0; i < numInstances; i++) {
 
         }
-
 
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
