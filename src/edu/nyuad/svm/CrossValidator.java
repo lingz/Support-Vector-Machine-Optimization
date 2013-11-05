@@ -25,7 +25,7 @@ public class CrossValidator {
 //    private long[] testingTimes = new long[10];
     private double[] accuracy = new double[10];
     private Classifier classifier;
-    private Instances data;
+    Instances data;
     private String type;
 
     public CrossValidator(String selectedType, Instances testData) {
@@ -36,7 +36,7 @@ public class CrossValidator {
     }
 
     // Instantiate the classifier
-    private IBk getkNNClassifier() {
+    IBk getkNNClassifier() {
         IBk classifier = new IBk(10);
         // Turn on cross validation
         classifier.setCrossValidate(true);
@@ -44,7 +44,7 @@ public class CrossValidator {
         return classifier;
     }
 
-    private SMO getSMOClassifier() {
+    SMO getSMOClassifier() {
         SMO classifier = new SMO();
         return classifier;
     }
@@ -83,13 +83,13 @@ public class CrossValidator {
         return mean / nums.length;
     }
 
-    public void trainValidator(Classifier classifier, Instances train) throws Exception{
+    public static void trainValidator(Classifier classifier, Instances train) throws Exception{
 //            long startTrain = System.nanoTime();
         classifier.buildClassifier(train);
 //            trainingTimes[i] = System.nanoTime() - startTrain;
     }
 
-    public Evaluation evaluateValidator(Instances data, Classifier classifier) throws Exception{
+    public static Evaluation evaluateValidator(Instances data, Classifier classifier) throws Exception{
         // perform cross-validation
         Evaluation eval = new Evaluation(data);
 //            long startTest = System.nanoTime();
