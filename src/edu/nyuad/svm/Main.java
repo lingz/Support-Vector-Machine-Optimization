@@ -54,27 +54,27 @@ public class Main {
 
         dataset.wilsonAndGaussianFilter();
         kNN = new CrossValidator("kNN", dataset);
-        kNN.crossValidate(filename + "-kNN-wilsonAndGaussian");
+        kNN.crossValidate(outputPath, filename + "-kNN-wilsonAndGaussian");
         smo = new CrossValidator("SMO", dataset);
-        smo.crossValidate(filename + "-SMO-wilsonAndGaussian");
+        smo.crossValidate(outputPath, filename + "-SMO-wilsonAndGaussian");
 
         dataset.wilsonFilter();
         kNN = new CrossValidator("kNN", dataset);
-        kNN.crossValidate(filename + "-kNN-wilson");
+        kNN.crossValidate(outputPath, filename + "-kNN-wilson");
         smo = new CrossValidator("SMO", dataset);
-        smo.crossValidate(filename + "-SMO-wilson");
+        smo.crossValidate(outputPath, filename + "-SMO-wilson");
 
         dataset.wilsonCondensationFilter();
         kNN = new CrossValidator("kNN", dataset);
-        kNN.crossValidate(filename + "-kNN-wilsonCondensation");
+        kNN.crossValidate(outputPath, filename + "-kNN-wilsonCondensation");
         smo = new CrossValidator("SMO", dataset);
-        smo.crossValidate(filename + "-SMO-wilsonCondensation");
+        smo.crossValidate(outputPath, filename + "-SMO-wilsonCondensation");
 
         dataset.wilsonAndWilsonCondensationFilter();
         kNN = new CrossValidator("kNN", dataset);
-        kNN.crossValidate(filename + "-kNN-wilsonAndWilsonCondensation");
+        kNN.crossValidate(outputPath, filename + "-kNN-wilsonAndWilsonCondensation");
         smo = new CrossValidator("SMO", dataset);
-        smo.crossValidate(filename + "-SMO-wilsonAndWilsonCondensation");
+        smo.crossValidate(outputPath, filename + "-SMO-wilsonAndWilsonCondensation");
 
 
     }
