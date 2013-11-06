@@ -7,10 +7,10 @@ import java.util.regex.Pattern;
 import weka.classifiers.Classifier;
 import weka.core.Instances;
 
-import com.google.caliper.BeforeExperiment;
 import com.google.caliper.Benchmark;
 import com.google.caliper.Param;
 import com.google.caliper.runner.CaliperMain;
+import com.google.caliper.runner.CaliperRun;
 /**
  * Created with IntelliJ IDEA.
  * User: ling
@@ -18,8 +18,10 @@ import com.google.caliper.runner.CaliperMain;
  * Time: 12:39 AM
  * To change this template use File | Settings | File Templates.
  */
-public class CrossValidatorTestBenchmark{
+public class CrossValidatorTestBenchmark extends Benchmark{
     private static final Pattern fileNamePattern = Pattern.compile(".*?([^/]+)\\.arff");
+    
+    @Param String path;
 
 	@Param({
 		"kNN",
@@ -38,65 +40,171 @@ public class CrossValidatorTestBenchmark{
 		"8",
 		"9",
 	}) int fold;
-	 
-	@Param Algorithm algorithm;
 	
-	public enum Algorithm{
-		KNN{
+	@Param Filter filter;
+	public enum Filter{
+		NONE{
+
 			@Override
-			Classifier createClassifier(CrossValidator cv) {
-				return cv.getkNNClassifier();
+			public void setFilter(DataFilters dataset) {
+				dataset.noFilter();
+				
 			}
+			
 		},
-		SMO{
+		PERCENTAGE_10{
+
 			@Override
-			Classifier createClassifier(CrossValidator cv) {
-				return cv.getSMOClassifier();
+			public void setFilter(DataFilters dataset) throws Exception {
+				dataset.percentageFilter(10);
 			}
+			
+		},
+		PERCENTAGE_20{
+
+			@Override
+			public void setFilter(DataFilters dataset) throws Exception {
+				dataset.percentageFilter(20);
+			}
+			
+		},
+		PERCENTAGE_30{
+
+			@Override
+			public void setFilter(DataFilters dataset) throws Exception {
+				dataset.percentageFilter(30);
+			}
+			
+		},
+		PERCENTAGE_40{
+
+			@Override
+			public void setFilter(DataFilters dataset) throws Exception {
+				dataset.percentageFilter(40);
+			}
+			
+		},
+		PERCENTAGE_50{
+
+			@Override
+			public void setFilter(DataFilters dataset) throws Exception {
+				dataset.percentageFilter(50);
+			}
+			
+		},
+		PERCENTAGE_60{
+
+			@Override
+			public void setFilter(DataFilters dataset) throws Exception {
+				dataset.percentageFilter(60);
+			}
+			
+		},
+		PERCENTAGE_70{
+
+			@Override
+			public void setFilter(DataFilters dataset) throws Exception {
+				dataset.percentageFilter(70);
+			}
+			
+		},
+		PERCENTAGE_80{
+
+			@Override
+			public void setFilter(DataFilters dataset) throws Exception {
+				dataset.percentageFilter(80);
+			}
+			
+		},
+		PERCENTAGE_90{
+
+			@Override
+			public void setFilter(DataFilters dataset) throws Exception {
+				dataset.percentageFilter(90);
+			}
+			
+		},
+		GAUSSIAN{
+
+			@Override
+			public void setFilter(DataFilters dataset) throws Exception {
+				dataset.gaussianFilter();
+				
+			}
+			
+		},
+		WILSON{
+
+			@Override
+			public void setFilter(DataFilters dataset) throws Exception {
+				dataset.wilsonFilter();
+			}
+			
+		},
+		WILSON_AND_GAUSSIAN{
+
+			@Override
+			public void setFilter(DataFilters dataset) throws Exception {
+				dataset.wilsonAndGaussianFilter();
+			}
+			
+		},
+		WILSON_CONDENSING{
+
+			@Override
+			public void setFilter(DataFilters dataset) throws Exception {
+				dataset.wilsonCondensationFilter();
+			}
+			
+		},
+		WILSON_AND_WILSON_CONDENSING{
+
+			@Override
+			public void setFilter(DataFilters dataset) throws Exception {
+				dataset.wilsonAndWilsonCondensationFilter();
+			}
+			
 		};
-		CrossValidator createCV(String type, DataFilters dataset){
-			return new CrossValidator(type, dataset);
-		}
-		Instances createTrain(CrossValidator cv, int fold){
-			return cv.data.trainCV(10, fold);
-		}
-		Instances createTest(CrossValidator cv, int fold){
-			return cv.data.testCV(10, fold);
-		}
-		abstract Classifier createClassifier(CrossValidator cv);
+		abstract public void setFilter(DataFilters dataset) throws Exception;
 	}
+	 	
 	
-	Instances train;
-	Instances test;
-	Classifier classifier;
+	private Instances train;
+	private Instances test;
+	private Classifier classifier;
 	
-	@BeforeExperiment public void setUp() throws Exception{
-		String filepath = "data/ling.arff";
+	@Override protected void setUp() throws Exception{
+		String filepath = path;
         Matcher match = fileNamePattern.matcher(filepath);
         match.matches();
         String filename = match.group(1);
-        System.out.println(filepath);
         DataFilters dataset = new DataFilters(filepath);
-        dataset.noFilter();
-        CrossValidator cv = algorithm.createCV(type, dataset);
-        train = algorithm.createTrain(cv, fold);
-        test = algorithm.createTest(cv, fold);
-        classifier = algorithm.createClassifier(cv);
-        cv.trainValidator(classifier, train);
+        filter.setFilter(dataset);
+        CrossValidator cv = new CrossValidator(type, dataset);
+        train = cv.data.trainCV(10, fold);
+        test = cv.data.testCV(10, fold);
+        
+        if (type.equals("kNN")){
+        	classifier = cv.getkNNClassifier();
+        } else if (type.equals("SMO")){
+        	classifier = cv.getSMOClassifier();
+        } else {
+        	System.out.println("AAAAAA");
+        }
+        CrossValidator.trainValidator(classifier, train);
     }
 	
-	@Benchmark public int timeEval(int reps) throws Exception {
+	public int timeTest(int reps) throws Exception {
 		int dummy = 0;
 		for (int i = 0; i<reps; i++){
-			System.out.println(test.toString());
 			CrossValidator.evaluateValidator(test, classifier);
-			dummy |= i;
+			dummy |= System.nanoTime();
 		}
 		return dummy;
 	}
 	
 	public static void main(String[] args) {
-        CaliperMain.main(CrossValidatorTestBenchmark.class, args);
+        CaliperMain.main(CrossValidatorTrainBenchmark.class, args);
     }
 	
 }

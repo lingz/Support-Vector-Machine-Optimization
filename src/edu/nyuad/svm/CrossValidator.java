@@ -93,11 +93,6 @@ public class CrossValidator {
 
     public static void trainValidator(Classifier classifier, Instances train) throws Exception{
 //            long startTrain = System.nanoTime();
-    	Scanner scanner = new Scanner(train.toString());
-    	for (int i = 0; i < 17 ; i++){
-    		scanner.nextLine();
-    	}
-    	System.out.println(scanner.nextLine());
         classifier.buildClassifier(train);
     }
 
