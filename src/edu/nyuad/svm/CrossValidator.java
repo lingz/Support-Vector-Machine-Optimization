@@ -31,6 +31,7 @@ public class CrossValidator {
     private int newDataCount;
     private long filterTime;
     private String type;
+    String output;
 
     public CrossValidator(String selectedType, DataFilters testData) {
         // build the classifier
@@ -109,9 +110,9 @@ public class CrossValidator {
         Instances train = data.trainCV(10, fold);
         Instances test = data.testCV(10, fold);
 
-        if (type == "kNN") {
+        if (type.equals("kNN")) {
             classifier = getkNNClassifier();
-        } else if (type == "SMO") {
+        } else if (type.equals("SMO")) {
             classifier = getSMOClassifier();
         } else {
             classifier = getkNNClassifier();
@@ -121,6 +122,9 @@ public class CrossValidator {
         trainingTimes[fold] = System.nanoTime() - startTrain;
         long startTest = System.nanoTime();
         Evaluation eval = evaluateValidator(test, classifier);
+        if (type.equals("kNN") && fold == 0) {
+            output += String.format("Optimal K: %s\n", ((IBk) classifier).getKNN());
+        }
         testingTimes[fold] = System.nanoTime() - startTest;
 
         return eval;
@@ -132,7 +136,7 @@ public class CrossValidator {
 
     public void crossValidate(String outputPath, String filename) throws Exception {
         // split into 10 folds
-        String output = "";
+        output = "";
 
         Classifier classifier;
         Evaluation results;
