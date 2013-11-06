@@ -28,20 +28,23 @@ public class Main {
         String filename = match.group(1);
         DataFilters dataset = new DataFilters(filepath);
 
-        dataset.noFilter();
-        CrossValidator kNN = new CrossValidator("kNN", dataset);
-        kNN.crossValidate(outputPath, filename + "-kNN-nofilter");
-        CrossValidator smo = new CrossValidator("SMO", dataset);
-        smo.crossValidate(outputPath, filename + "-SMO-nofilter");
+        CrossValidator kNN;
+        CrossValidator smo;
 
-
-        for (double percentage = 10; percentage <= 90; percentage += 10) {
-            dataset.percentageFilter(percentage);
-            kNN = new CrossValidator("kNN", dataset);
-            kNN.crossValidate(outputPath, filename + "-kNN-removeRandom-" + percentage);
-            smo = new CrossValidator("SMO", dataset);
-            smo.crossValidate(outputPath, filename + "-SMO-removeRandom-" + percentage);
-        }
+//        dataset.noFilter();
+//        kNN = new CrossValidator("kNN", dataset);
+//        kNN.crossValidate(outputPath, filename + "-kNN-nofilter");
+//        smo = new CrossValidator("SMO", dataset);
+//        smo.crossValidate(outputPath, filename + "-SMO-nofilter");
+//
+//
+//        for (double percentage = 10; percentage <= 90; percentage += 10) {
+//            dataset.percentageFilter(percentage);
+//            kNN = new CrossValidator("kNN", dataset);
+//            kNN.crossValidate(outputPath, filename + "-kNN-removeRandom-" + percentage);
+//            smo = new CrossValidator("SMO", dataset);
+//            smo.crossValidate(outputPath, filename + "-SMO-removeRandom-" + percentage);
+//        }
 
         dataset.gaussianFilter();
         kNN = new CrossValidator("kNN", dataset);
