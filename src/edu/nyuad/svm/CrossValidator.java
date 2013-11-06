@@ -21,19 +21,21 @@ import java.util.Date;
  * Written by Lingliang Zhang
  */
 public class CrossValidator {
-//    private long[] trainingTimes = new long[10];
-//    private long[] testingTimes = new long[10];
+    private long[] trainingTimes = new long[10];
+    private long[] testingTimes = new long[10];
     private double[] accuracy = new double[10];
     private Classifier classifier;
     Instances data;
     private int oldDataCount;
     private int newDataCount;
+    private long filterTime;
     private String type;
 
     public CrossValidator(String selectedType, DataFilters testData) {
         // build the classifier
         type = selectedType;
         data = testData.newData;
+        filterTime = testData.filterTime;
         oldDataCount = testData.oldData.numInstances();
         newDataCount = testData.newData.numInstances();
         data.stratify(10);
@@ -88,17 +90,15 @@ public class CrossValidator {
     }
 
     public static void trainValidator(Classifier classifier, Instances train) throws Exception{
-//            long startTrain = System.nanoTime();
         classifier.buildClassifier(train);
-//            trainingTimes[i] = System.nanoTime() - startTrain;
     }
 
     public static Evaluation evaluateValidator(Instances data, Classifier classifier) throws Exception{
         // perform cross-validation
         Evaluation eval = new Evaluation(data);
-//            long startTest = System.nanoTime();
+
         eval.evaluateModel(classifier, data);
-//            testingTimes[i] = System.nanoTime() - startTest;
+
         return eval;
     }
 
@@ -114,19 +114,23 @@ public class CrossValidator {
         } else {
             classifier = getkNNClassifier();
         }
-
+        long startTrain = System.nanoTime();
         trainValidator(classifier, train);
+        trainingTimes[fold] = System.nanoTime() - startTrain;
+        long startTest = System.nanoTime();
         Evaluation eval = evaluateValidator(test, classifier);
+        testingTimes[fold] = System.nanoTime() - startTest;
 
         return eval;
     }
 
     public void crossValidate(String filename) throws Exception {
-        crossValidate(filename, "");
+        crossValidate("results", filename);
     }
 
-    public void crossValidate(String filename, String output) throws Exception {
+    public void crossValidate(String outputPath, String filename) throws Exception {
         // split into 10 folds
+        String output = "";
 
         Classifier classifier;
         Evaluation results;
@@ -150,17 +154,18 @@ public class CrossValidator {
         output += String.format("Mean Accuracy: \t\t\t\t\t\t\t%s", Double.toString(getMean(accuracy))) + "\n";
         output += String.format("Variace of Accuracy: \t\t\t\t\t%s", Double.toString(getVariance(accuracy))) + "\n";
         output += String.format("Standard Deviation of Accuracy: \t%s", Double.toString(Math.sqrt(getVariance(accuracy)))) + "\n";
-//        System.out.println(String.format("Mean Training Time: \t\t\t\t\t%s", Long.toString(getMean(trainingTimes))));
-//        System.out.println(String.format("Variace of Training Time: \t\t\t\t%s", Long.toString(getVariance(trainingTimes))));
-//        System.out.println(String.format("Standard Deviation of Training Time: \t%s", Double.toString(Math.sqrt(getVariance(trainingTimes)))));
-//        System.out.println(String.format("Mean Testing Time: \t\t\t\t\t\t%s", Long.toString(getMean(testingTimes))));
-//        System.out.println(String.format("Variace of Testing Time: \t\t\t\t%s", Long.toString(getVariance(testingTimes))));
-//        System.out.println(String.format("Standard Deviation of Testing Time: \t%s", Double.toString(Math.sqrt(getVariance(testingTimes)))));
+        output += String.format("Filter Time: \t\t\t\t\t%s", Long.toString(filterTime)) + "\n";
+        output += String.format("Mean Training Time: \t\t\t\t\t%s", Long.toString(getMean(trainingTimes))) + "\n";
+        output += String.format("Variace of Training Time: \t\t\t\t%s", Long.toString(getVariance(trainingTimes))) + "\n";
+        output += String.format("Standard Deviation of Training Time: \t%s", Double.toString(Math.sqrt(getVariance(trainingTimes)))) + "\n";
+        output += String.format("Mean Testing Time: \t\t\t\t\t\t%s", Long.toString(getMean(testingTimes))) + "\n";
+        output += String.format("Variace of Testing Time: \t\t\t\t%s", Long.toString(getVariance(testingTimes))) + "\n";
+        output += String.format("Standard Deviation of Testing Time: \t%s", Double.toString(Math.sqrt(getVariance(testingTimes)))) + "\n";
 
         // print results
         java.util.Date date= new java.util.Date();
         String time = new Timestamp(date.getTime()).toString().replace(" ", "-");
-        File file = new File("results/" + "-" + filename + "-" + time + ".txt");
+        File file = new File(outputPath + "/" + "-" + filename + "-" + time + ".txt");
         if (!file.exists()) {
             file.createNewFile();
         }

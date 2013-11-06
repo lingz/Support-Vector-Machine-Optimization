@@ -14,6 +14,7 @@ import weka.filters.unsupervised.instance.RemovePercentage;
 public class DataFilters {
     public Instances oldData;
     public Instances newData;
+    long filterTime;
 
     public DataFilters(String filename) throws Exception{
         oldData = readData(filename);
@@ -24,11 +25,14 @@ public class DataFilters {
     }
 
     public void noFilter() {
+        filterTime = 0;
         newData = oldData;
     }
 
     public void percentageFilter(double percentage) throws Exception {
+        long startFilter = System.nanoTime();
         newData = removePercentage(percentage);
+        filterTime = System.nanoTime() - startFilter;
     }
 
     public Instances removePercentage(double percentage) throws Exception{
@@ -40,7 +44,9 @@ public class DataFilters {
     }
 
     public void gaussianFilter() throws Exception {
+        long startFilter = System.nanoTime();
         newData = removeGaussian();
+        filterTime = System.nanoTime() - startFilter;
     }
 
     public Instances removeGaussian() throws Exception {
@@ -51,7 +57,9 @@ public class DataFilters {
     }
 
     public void wilsonFilter() throws Exception {
+        long startFilter = System.nanoTime();
         newData = removeWilson();
+        filterTime = System.nanoTime() - startFilter;
     }
 
     public Instances removeWilson() throws Exception {

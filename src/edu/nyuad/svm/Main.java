@@ -10,11 +10,18 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         String filepath;
+        String outputPath;
         if (args.length > 0) {
             filepath = args[0];
         } else {
             filepath = "data/ling_test.arff";
         }
+        if (args.length > 1) {
+            outputPath = args[1];
+        } else {
+            outputPath = "results";
+        }
+
         System.out.println("processing " + filepath);
         Matcher match = fileNamePattern.matcher(filepath);
         match.matches();
@@ -23,24 +30,24 @@ public class Main {
 
         dataset.noFilter();
         CrossValidator kNN = new CrossValidator("kNN", dataset);
-        kNN.crossValidate(filename + "-kNN-nofilter");
+        kNN.crossValidate(outputPath, filename + "-kNN-nofilter");
         CrossValidator smo = new CrossValidator("SMO", dataset);
-        smo.crossValidate(filename + "-SMO-nofilter");
+        smo.crossValidate(outputPath, filename + "-SMO-nofilter");
 
 
         for (double percentage = 10; percentage <= 90; percentage += 10) {
             dataset.percentageFilter(percentage);
             kNN = new CrossValidator("kNN", dataset);
-            kNN.crossValidate(filename + "-kNN-removeRandom-" + percentage);
+            kNN.crossValidate(outputPath, filename + "-kNN-removeRandom-" + percentage);
             smo = new CrossValidator("SMO", dataset);
-            smo.crossValidate(filename + "-SMO-removeRandom-" + percentage);
+            smo.crossValidate(outputPath, filename + "-SMO-removeRandom-" + percentage);
         }
 
         dataset.gaussianFilter();
         kNN = new CrossValidator("kNN", dataset);
-        kNN.crossValidate(filename + "-kNN-gaussian");
+        kNN.crossValidate(outputPath, filename + "-kNN-gaussian");
         smo = new CrossValidator("SMO", dataset);
-        smo.crossValidate(filename + "-SMO-gaussian");
+        smo.crossValidate(outputPath, filename + "-SMO-gaussian");
 //
 //        dataset.wilsonFilter();
 //        kNN = new CrossValidator("kNN", dataset);
