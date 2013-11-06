@@ -19,7 +19,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/dependencies/caliper-1.0-beta-SNAPSHOT-all.jar!/" />
+          <root url="jar://$MODULE_DIR$/dependencies/caliper-1.0-beta-1-all.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

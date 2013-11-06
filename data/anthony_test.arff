@@ -11,7 +11,7 @@
 @attribute 'pH' numeric
 @attribute 'sulphates' numeric
 @attribute 'alcohol' numeric
-@attribute 'quality' numeric
+@attribute 'quality' {4, 5, 6, 7, 8}
 
 @data
 6.2,0.66,0.48,1.2,0.029,29,75,0.9892,3.33,0.39,12.8,8
