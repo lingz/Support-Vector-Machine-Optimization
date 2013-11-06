@@ -98,15 +98,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Filter.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/dependencies/weka.jar!/weka/filters/Filter.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="0" selection-start="4304" selection-end="4304" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CrossValidator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidator.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -116,10 +107,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CrossValidatorTrainBenchmark.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="CrossValidatorTrainBenchmark.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorTrainBenchmark.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="13" selection-start="483" selection-end="483" vertical-scroll-proportion="0.7051282">
+            <state line="20" column="13" selection-start="483" selection-end="483" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CrossValidatorFilterBenchmark.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorFilterBenchmark.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="13" selection-start="483" selection-end="483" vertical-scroll-proportion="-11.394366">
               <folding />
             </state>
           </provider>
@@ -475,7 +475,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="25" width="1372" height="745" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -492,7 +492,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24924242" sideWeight="0.4691152" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5308848" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5308848" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="97" y="125" width="1172" height="545" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -566,11 +566,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///usr/lib/jvm/java-7-oracle/src.zip!/java/util/Formatter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2486" column="0" selection-start="102914" selection-end="102914" vertical-scroll-proportion="50.598404" />
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-7-oracle/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2796" column="0" selection-start="111627" selection-end="111627" vertical-scroll-proportion="3.6804407">
@@ -669,7 +664,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorTrainBenchmark.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="13" selection-start="483" selection-end="483" vertical-scroll-proportion="0.7051282">
+        <state line="20" column="13" selection-start="483" selection-end="483" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorFilterBenchmark.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="13" selection-start="483" selection-end="483" vertical-scroll-proportion="-11.394366">
           <folding />
         </state>
       </provider>
