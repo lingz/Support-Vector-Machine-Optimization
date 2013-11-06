@@ -1,5 +1,7 @@
 package edu.nyuad.svm;
 
+import java.io.File;
+
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils;
 import weka.filters.Filter;

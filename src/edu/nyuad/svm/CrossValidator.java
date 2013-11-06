@@ -6,13 +6,14 @@ import weka.classifiers.Classifier;
 import weka.classifiers.lazy.IBk;
 import weka.classifiers.functions.SMO;
 import weka.classifiers.Evaluation;
-import java.lang.Math;
 
+import java.lang.Math;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  * Cross validation implementation
@@ -89,6 +90,11 @@ public class CrossValidator {
 
     public static void trainValidator(Classifier classifier, Instances train) throws Exception{
 //            long startTrain = System.nanoTime();
+    	Scanner scanner = new Scanner(train.toString());
+    	for (int i = 0; i < 17 ; i++){
+    		scanner.nextLine();
+    	}
+    	System.out.println(scanner.nextLine());
         classifier.buildClassifier(train);
 //            trainingTimes[i] = System.nanoTime() - startTrain;
     }
