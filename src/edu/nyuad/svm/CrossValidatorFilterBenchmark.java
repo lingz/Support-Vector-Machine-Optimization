@@ -177,7 +177,7 @@ public class CrossValidatorFilterBenchmark extends Benchmark{
         dataset = new DataFilters(filepath);
     }
 	
-	public int filterTest(int reps) throws Exception {
+	public int timeFilter(int reps) throws Exception {
 		int dummy = 0;
 		for (int i = 0; i<reps; i++){
 			filter.setFilter(dataset);
