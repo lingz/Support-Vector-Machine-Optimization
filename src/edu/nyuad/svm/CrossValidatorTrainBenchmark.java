@@ -7,10 +7,10 @@ import java.util.regex.Pattern;
 import weka.classifiers.Classifier;
 import weka.core.Instances;
 
-import com.google.caliper.BeforeExperiment;
 import com.google.caliper.Benchmark;
 import com.google.caliper.Param;
 import com.google.caliper.runner.CaliperMain;
+import com.google.caliper.runner.CaliperRun;
 /**
  * Created with IntelliJ IDEA.
  * User: ling
@@ -18,8 +18,10 @@ import com.google.caliper.runner.CaliperMain;
  * Time: 12:39 AM
  * To change this template use File | Settings | File Templates.
  */
-public class CrossValidatorTrainBenchmark{
+public class CrossValidatorTrainBenchmark extends Benchmark{
     private static final Pattern fileNamePattern = Pattern.compile(".*?([^/]+)\\.arff");
+    
+    @Param String path;
 
 	@Param({
 		"kNN",
@@ -44,8 +46,8 @@ public class CrossValidatorTrainBenchmark{
 	private Instances test;
 	private Classifier classifier;
 	
-	@BeforeExperiment public void setUp() throws Exception{
-		String filepath = "data/ling_test.arff";
+	@Override protected void setUp() throws Exception{
+		String filepath = path;
         Matcher match = fileNamePattern.matcher(filepath);
         match.matches();
         String filename = match.group(1);
@@ -54,7 +56,6 @@ public class CrossValidatorTrainBenchmark{
         CrossValidator cv = new CrossValidator(type, dataset);
         train = cv.data.trainCV(10, fold);
         test = cv.data.testCV(10, fold);
-        System.out.println(type);
         
         if (type.equals("kNN")){
         	classifier = cv.getkNNClassifier();
@@ -65,15 +66,10 @@ public class CrossValidatorTrainBenchmark{
         }
     }
 	
-	@Benchmark public int timeTrain(int reps) throws Exception {
+	public int timeTrain(int reps) throws Exception {
 		int dummy = 0;
 		for (int i = 0; i<reps; i++){
-			System.out.println(reps);
-			System.out.println(fold);
-			System.out.println(type);
 			CrossValidator.trainValidator(classifier, train);
-			System.out.println("done");
-			System.out.println();
 			dummy |= System.nanoTime();
 		}
 		return dummy;
