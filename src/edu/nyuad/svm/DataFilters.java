@@ -50,6 +50,17 @@ public class DataFilters {
         return newData;
     }
 
+    public void wilsonFilter() throws Exception {
+        newData = removeWilson();
+    }
+
+    public Instances removeWilson() throws Exception {
+        WilsonFilter wilsonFilter = new WilsonFilter();
+        wilsonFilter.setInputFormat(oldData);
+        Instances newData = Filter.useFilter(oldData, wilsonFilter);
+        return newData;
+    }
+
     // gets the data for use with all training methods
     private Instances readData(String filename) throws Exception{
         Instances data = ConverterUtils.DataSource.read(filename);
