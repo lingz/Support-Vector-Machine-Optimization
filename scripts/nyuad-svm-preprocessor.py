@@ -15,8 +15,8 @@ def init(file_handle):
   preamble = []
   attributes = []
   attribute_count = 0
-  attribute = re.compile('@attribute')
-  data = re.compile('@data')
+  attribute = re.compile('@attribute|@ATTRIBUTE')
+  data = re.compile('@data|@DATA')
   for i, line in enumerate(file_handle):
     preamble.append(line)
     if data.match(line):
@@ -62,6 +62,8 @@ def main():
         class_count = map(lambda classname: len(classes[classname]), classes)
         min_count = min(class_count)
         min_allowed = input("Please enter the max instances allowed of any class:\n")
+        if not min_allowed:
+          min_allowed = 10000000000
         if min_count > min_allowed:
           min_count = min_allowed
         data = []
