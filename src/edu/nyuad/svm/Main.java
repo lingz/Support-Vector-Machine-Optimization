@@ -31,32 +31,50 @@ public class Main {
         CrossValidator kNN;
         CrossValidator smo;
 
-//        dataset.noFilter();
-//        kNN = new CrossValidator("kNN", dataset);
-//        kNN.crossValidate(outputPath, filename + "-kNN-nofilter");
-//        smo = new CrossValidator("SMO", dataset);
-//        smo.crossValidate(outputPath, filename + "-SMO-nofilter");
-//
-//
-//        for (double percentage = 10; percentage <= 90; percentage += 10) {
-//            dataset.percentageFilter(percentage);
-//            kNN = new CrossValidator("kNN", dataset);
-//            kNN.crossValidate(outputPath, filename + "-kNN-removeRandom-" + percentage);
-//            smo = new CrossValidator("SMO", dataset);
-//            smo.crossValidate(outputPath, filename + "-SMO-removeRandom-" + percentage);
-//        }
+        dataset.noFilter();
+        kNN = new CrossValidator("kNN", dataset);
+        kNN.crossValidate(outputPath, filename + "-kNN-nofilter");
+        smo = new CrossValidator("SMO", dataset);
+        smo.crossValidate(outputPath, filename + "-SMO-nofilter");
+
+
+        for (double percentage = 10; percentage <= 90; percentage += 10) {
+            dataset.percentageFilter(percentage);
+            kNN = new CrossValidator("kNN", dataset);
+            kNN.crossValidate(outputPath, filename + "-kNN-removeRandom-" + percentage);
+            smo = new CrossValidator("SMO", dataset);
+            smo.crossValidate(outputPath, filename + "-SMO-removeRandom-" + percentage);
+        }
 
         dataset.gaussianFilter();
         kNN = new CrossValidator("kNN", dataset);
         kNN.crossValidate(outputPath, filename + "-kNN-gaussian");
         smo = new CrossValidator("SMO", dataset);
         smo.crossValidate(outputPath, filename + "-SMO-gaussian");
-//
-//        dataset.wilsonFilter();
-//        kNN = new CrossValidator("kNN", dataset);
-//        kNN.crossValidate(filename + "-kNN-wilson");
-//        smo = new CrossValidator("SMO", dataset);
-//        smo.crossValidate(filename + "-SMO-wilson");
+
+        dataset.wilsonAndGaussianFilter();
+        kNN = new CrossValidator("kNN", dataset);
+        kNN.crossValidate(filename + "-kNN-wilsonAndGaussian");
+        smo = new CrossValidator("SMO", dataset);
+        smo.crossValidate(filename + "-SMO-wilsonAndGaussian");
+
+        dataset.wilsonFilter();
+        kNN = new CrossValidator("kNN", dataset);
+        kNN.crossValidate(filename + "-kNN-wilson");
+        smo = new CrossValidator("SMO", dataset);
+        smo.crossValidate(filename + "-SMO-wilson");
+
+        dataset.wilsonCondensationFilter();
+        kNN = new CrossValidator("kNN", dataset);
+        kNN.crossValidate(filename + "-kNN-wilsonCondensation");
+        smo = new CrossValidator("SMO", dataset);
+        smo.crossValidate(filename + "-SMO-wilsonCondensation");
+
+        dataset.wilsonAndWilsonCondensationFilter();
+        kNN = new CrossValidator("kNN", dataset);
+        kNN.crossValidate(filename + "-kNN-wilsonAndWilsonCondensation");
+        smo = new CrossValidator("SMO", dataset);
+        smo.crossValidate(filename + "-SMO-wilsonAndWilsonCondensation");
 
 
     }

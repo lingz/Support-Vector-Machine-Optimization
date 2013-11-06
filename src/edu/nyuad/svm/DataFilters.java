@@ -69,6 +69,39 @@ public class DataFilters {
         return newData;
     }
 
+    public void wilsonCondensationFilter() throws Exception {
+        long startFilter = System.nanoTime();
+        newData = removeWilsonCondensation();
+        filterTime = System.nanoTime() - startFilter;
+    }
+
+    public Instances removeWilsonCondensation() throws Exception {
+        WilsonCondensationFilter wilsonCondensationFilter = new WilsonCondensationFilter();
+        wilsonCondensationFilter.setInputFormat(oldData);
+        Instances newData = Filter.useFilter(oldData, wilsonCondensationFilter);
+        return newData;
+    }
+
+    public void wilsonAndWilsonCondensationFilter() throws Exception {
+        Instances tempData = oldData;
+        long startFilter = System.nanoTime();
+        oldData = removeWilson();
+        newData = removeWilsonCondensation();
+        oldData = tempData;
+        filterTime = System.nanoTime() - startFilter;
+    }
+
+    public void wilsonAndGaussianFilter() throws Exception {
+        Instances tempData = oldData;
+        long startFilter = System.nanoTime();
+        oldData = removeWilson();
+        newData = removeGaussian();
+        oldData = tempData;
+        filterTime = System.nanoTime() - startFilter;
+    }
+
+
+
     // gets the data for use with all training methods
     private Instances readData(String filename) throws Exception{
         Instances data = ConverterUtils.DataSource.read(filename);
