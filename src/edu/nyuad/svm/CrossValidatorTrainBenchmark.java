@@ -10,12 +10,7 @@ import weka.core.Instances;
 import com.google.caliper.BeforeExperiment;
 import com.google.caliper.Benchmark;
 import com.google.caliper.Param;
-import com.google.caliper.options.CaliperOptions;
-import com.google.caliper.options.OptionsModule;
 import com.google.caliper.runner.CaliperMain;
-import com.google.caliper.util.Util;
-
-import static com.google.common.collect.ObjectArrays.concat;
 /**
  * Created with IntelliJ IDEA.
  * User: ling
@@ -23,11 +18,9 @@ import static com.google.common.collect.ObjectArrays.concat;
  * Time: 12:39 AM
  * To change this template use File | Settings | File Templates.
  */
-public class CrossValidatorBenchmark{
+public class CrossValidatorTrainBenchmark{
     private static final Pattern fileNamePattern = Pattern.compile(".*?([^/]+)\\.arff");
 
-	
-	Classifier classifier;
 	@Param({
 		"kNN",
 		"SMO",
@@ -45,34 +38,49 @@ public class CrossValidatorBenchmark{
 		"8",
 		"9",
 	}) int fold;
+	 
+	@Param Algorithm algorithm;
+	
+	public enum Algorithm{
+		KNN{
+			@Override
+			Classifier createClassifier(CrossValidator cv) {
+				return cv.getkNNClassifier();
+			}
+		},
+		SMO{
+			@Override
+			Classifier createClassifier(CrossValidator cv) {
+				return cv.getSMOClassifier();
+			}
+		};
+		CrossValidator createCV(String type, DataFilters dataset){
+			return new CrossValidator(type, dataset);
+		}
+		Instances createTrain(CrossValidator cv, int fold){
+			return cv.data.trainCV(10, fold);
+		}
+		Instances createTest(CrossValidator cv, int fold){
+			return cv.data.testCV(10, fold);
+		}
+		abstract Classifier createClassifier(CrossValidator cv);
+	}
 	
 	Instances train;
 	Instances test;
+	Classifier classifier;
 	
 	@BeforeExperiment public void setUp() throws Exception{
-		
 		String filepath = "data/ling.arff";
         Matcher match = fileNamePattern.matcher(filepath);
         match.matches();
         String filename = match.group(1);
-
         DataFilters dataset = new DataFilters(filepath);
-
         dataset.noFilter();
-        CrossValidator kNN = new CrossValidator("kNN", dataset);
-        kNN.crossValidate(filename + "-kNN-nofilter");
-        CrossValidator smo = new CrossValidator("SMO", dataset);
-        smo.crossValidate(filename + "-SMO-nofilter");
-    
-        if (type == "kNN") {
-        	train = kNN.data.trainCV(10, fold);
-            test = kNN.data.testCV(10, fold);
-            classifier = kNN.getkNNClassifier();
-        } else if (type == "SMO") {
-        	train = smo.data.trainCV(10, fold);
-            test = smo.data.testCV(10, fold);
-            classifier = smo.getSMOClassifier();
-        } 
+        CrossValidator cv = algorithm.createCV(type, dataset);
+        train = algorithm.createTrain(cv, fold);
+        test = algorithm.createTest(cv, fold);
+        classifier = algorithm.createClassifier(cv);
     }
 	
 	@Benchmark public int timeTrain(int reps) throws Exception {
@@ -83,17 +91,9 @@ public class CrossValidatorBenchmark{
 		}
 		return dummy;
 	}
-	@Benchmark public int timeEval(int reps) throws Exception {
-		int dummy = 0;
-		for (int i = 0; i<reps; i++){
-			CrossValidator.evaluateValidator(test, classifier);
-			dummy |= i;
-		}
-		return dummy;
-	}
 	
 	public static void main(String[] args) {
-        CaliperMain.main(CrossValidatorBenchmark.class, args);
+        CaliperMain.main(CrossValidatorTrainBenchmark.class, args);
     }
 	
 }
