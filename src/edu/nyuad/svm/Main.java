@@ -13,7 +13,7 @@ public class Main {
         if (args.length > 0) {
             filepath = args[0];
         } else {
-            filepath = "data/ling.arff";
+            filepath = "data/ling_test.arff";
         }
         System.out.println("processing " + filepath);
         Matcher match = fileNamePattern.matcher(filepath);
