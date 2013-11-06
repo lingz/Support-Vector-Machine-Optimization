@@ -38,56 +38,43 @@ public class CrossValidatorTrainBenchmark{
 		"8",
 		"9",
 	}) int fold;
-	 
-	@Param Algorithm algorithm;
+	 	
 	
-	public enum Algorithm{
-		KNN{
-			@Override
-			Classifier createClassifier(CrossValidator cv) {
-				return cv.getkNNClassifier();
-			}
-		},
-		SMO{
-			@Override
-			Classifier createClassifier(CrossValidator cv) {
-				return cv.getSMOClassifier();
-			}
-		};
-		CrossValidator createCV(String type, DataFilters dataset){
-			return new CrossValidator(type, dataset);
-		}
-		Instances createTrain(CrossValidator cv, int fold){
-			return cv.data.trainCV(10, fold);
-		}
-		Instances createTest(CrossValidator cv, int fold){
-			return cv.data.testCV(10, fold);
-		}
-		abstract Classifier createClassifier(CrossValidator cv);
-	}
-	
-	Instances train;
-	Instances test;
-	Classifier classifier;
+	private Instances train;
+	private Instances test;
+	private Classifier classifier;
 	
 	@BeforeExperiment public void setUp() throws Exception{
-		String filepath = "data/ling.arff";
+		String filepath = "data/ling_test.arff";
         Matcher match = fileNamePattern.matcher(filepath);
         match.matches();
         String filename = match.group(1);
         DataFilters dataset = new DataFilters(filepath);
         dataset.noFilter();
-        CrossValidator cv = algorithm.createCV(type, dataset);
-        train = algorithm.createTrain(cv, fold);
-        test = algorithm.createTest(cv, fold);
-        classifier = algorithm.createClassifier(cv);
+        CrossValidator cv = new CrossValidator(type, dataset);
+        train = cv.data.trainCV(10, fold);
+        test = cv.data.testCV(10, fold);
+        System.out.println(type);
+        
+        if (type.equals("kNN")){
+        	classifier = cv.getkNNClassifier();
+        } else if (type.equals("SMO")){
+        	classifier = cv.getSMOClassifier();
+        } else {
+        	System.out.println("AAAAAA");
+        }
     }
 	
 	@Benchmark public int timeTrain(int reps) throws Exception {
 		int dummy = 0;
 		for (int i = 0; i<reps; i++){
+			System.out.println(reps);
+			System.out.println(fold);
+			System.out.println(type);
 			CrossValidator.trainValidator(classifier, train);
-			dummy |= i;
+			System.out.println("done");
+			System.out.println();
+			dummy |= System.nanoTime();
 		}
 		return dummy;
 	}
