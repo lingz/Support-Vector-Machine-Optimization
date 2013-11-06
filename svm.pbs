@@ -1,0 +1,25 @@
+#!/bin/bash
+#PBS -V
+#PBS -l nodes=1:ppn=1,walltime=12:00:00
+#PBS -N SVM_Test
+#PBS -M lz781@nyu.edu
+#PBS -m abe
+#PBS -e localhost:/scratch/lz781/${PBS_JOBNAME}.e${PBS_JOBID}
+#PBS -o localhost:/scratch/lz781/${PBS_JOBNAME}.o${PBS_JOBID}
+#PBS -q bigmem
+#PBS -l mem=64GB
+
+cd Support-Vector-Machine-Optimization/
+
+java -cp dependencies/weka.jar:out/production/SVM edu.nyuad.svm.Main "data/ling.arff"
+
+java -cp dependencies/weka.jar:out/production/SVM edu.nyuad.svm.Main "data/oleg.arff"
+
+java -cp dependencies/weka.jar:out/production/SVM edu.nyuad.svm.Main "data/seung.arff"
+
+java -cp dependencies/weka.jar:out/production/SVM edu.nyuad.svm.Main "data/francis.arff"
+
+java -cp dependencies/weka.jar:out/production/SVM edu.nyuad.svm.Main "data/moiri.arff"
+
+exit 0;
+

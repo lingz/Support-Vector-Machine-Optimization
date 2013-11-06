@@ -16,6 +16,7 @@ import weka.filters.unsupervised.instance.RemovePercentage;
 public class DataFilters {
     public Instances oldData;
     public Instances newData;
+    long filterTime;
 
     public DataFilters(String filename) throws Exception{
         oldData = readData(filename);
@@ -26,11 +27,14 @@ public class DataFilters {
     }
 
     public void noFilter() {
+        filterTime = 0;
         newData = oldData;
     }
 
     public void percentageFilter(double percentage) throws Exception {
+        long startFilter = System.nanoTime();
         newData = removePercentage(percentage);
+        filterTime = System.nanoTime() - startFilter;
     }
 
     public Instances removePercentage(double percentage) throws Exception{
@@ -42,7 +46,9 @@ public class DataFilters {
     }
 
     public void gaussianFilter() throws Exception {
+        long startFilter = System.nanoTime();
         newData = removeGaussian();
+        filterTime = System.nanoTime() - startFilter;
     }
 
     public Instances removeGaussian() throws Exception {
@@ -53,7 +59,9 @@ public class DataFilters {
     }
 
     public void wilsonFilter() throws Exception {
+        long startFilter = System.nanoTime();
         newData = removeWilson();
+        filterTime = System.nanoTime() - startFilter;
     }
 
     public Instances removeWilson() throws Exception {
@@ -62,6 +70,39 @@ public class DataFilters {
         Instances newData = Filter.useFilter(oldData, wilsonFilter);
         return newData;
     }
+
+    public void wilsonCondensationFilter() throws Exception {
+        long startFilter = System.nanoTime();
+        newData = removeWilsonCondensation();
+        filterTime = System.nanoTime() - startFilter;
+    }
+
+    public Instances removeWilsonCondensation() throws Exception {
+        WilsonCondensationFilter wilsonCondensationFilter = new WilsonCondensationFilter();
+        wilsonCondensationFilter.setInputFormat(oldData);
+        Instances newData = Filter.useFilter(oldData, wilsonCondensationFilter);
+        return newData;
+    }
+
+    public void wilsonAndWilsonCondensationFilter() throws Exception {
+        Instances tempData = oldData;
+        long startFilter = System.nanoTime();
+        oldData = removeWilson();
+        newData = removeWilsonCondensation();
+        oldData = tempData;
+        filterTime = System.nanoTime() - startFilter;
+    }
+
+    public void wilsonAndGaussianFilter() throws Exception {
+        Instances tempData = oldData;
+        long startFilter = System.nanoTime();
+        oldData = removeWilson();
+        newData = removeGaussian();
+        oldData = tempData;
+        filterTime = System.nanoTime() - startFilter;
+    }
+
+
 
     // gets the data for use with all training methods
     private Instances readData(String filename) throws Exception{

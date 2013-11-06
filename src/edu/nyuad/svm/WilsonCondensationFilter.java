@@ -1,9 +1,11 @@
 package edu.nyuad.svm;
 
-import weka.core.*;
-import weka.core.Capabilities.*;
-import weka.filters.*;
+import weka.core.Capabilities;
+import weka.core.Instance;
+import weka.core.Instances;
 import weka.core.neighboursearch.CoverTree;
+import weka.filters.SimpleBatchFilter;
+
 /*
 Wilson Editing filter, code by Seung Man Oh
 
@@ -12,8 +14,8 @@ only if the majority of the neighbours are of the same class.
 
 The k is set as 3 by default.
 */
-public class WilsonFilter extends SimpleBatchFilter{
-    private int K=3;
+public class WilsonCondensationFilter extends SimpleBatchFilter{
+    private int K=4;
 
     public String globalInfo(){
         return   " Wilson Editing with k=3 nearest neighbor rule";
@@ -50,7 +52,7 @@ public class WilsonFilter extends SimpleBatchFilter{
                 }
             }
 
-            if(n > K-n){
+            if(K != n){
                 result.add(temp);
             }
         }
@@ -58,6 +60,6 @@ public class WilsonFilter extends SimpleBatchFilter{
     }
 
     public static void main(String[] args) {
-        runFilter(new WilsonFilter(), args);
+        runFilter(new WilsonCondensationFilter(), args);
     }
 }
