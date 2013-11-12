@@ -204,7 +204,7 @@ public class CrossValidatorTestBenchmark extends Benchmark{
 	}
 	
 	public static void main(String[] args) {
-        CaliperMain.main(CrossValidatorTrainBenchmark.class, args);
+        CaliperMain.main(CrossValidatorTestBenchmark.class, args);
     }
 	
 }
