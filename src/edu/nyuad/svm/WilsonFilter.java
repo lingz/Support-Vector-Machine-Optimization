@@ -1,9 +1,11 @@
 package edu.nyuad.svm;
 
-import weka.core.*;
-import weka.core.Capabilities.*;
-import weka.filters.*;
-import weka.core.neighboursearch.CoverTree;
+import weka.core.Capabilities;
+import weka.core.Instance;
+import weka.core.Instances;
+import weka.core.neighboursearch.LinearNNSearch;
+import weka.filters.SimpleBatchFilter;
+
 /*
 Wilson Editing filter, code by Seung Man Oh
 
@@ -36,13 +38,13 @@ public class WilsonFilter extends SimpleBatchFilter{
         Instance temp;
         int n;
 
-        CoverTree CT = new CoverTree();
-        CT.setInstances(inst);
+        LinearNNSearch kNN = new LinearNNSearch();
+        kNN.setInstances(inst);
 
 
         for (int i = 0; i < inst.numInstances(); i++) {
             temp=inst.instance(i);
-            knn=CT.kNearestNeighbours(temp,K);
+            knn= kNN.kNearestNeighbours(temp,K);
             n=0;
             for(int j=0;j<K;j++){
                 if (temp.value(temp.classAttribute()) == knn.instance(j).value(knn.instance(j).classAttribute())){

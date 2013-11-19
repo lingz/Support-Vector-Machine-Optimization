@@ -1,7 +1,5 @@
 package edu.nyuad.svm;
 
-import java.io.File;
-
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils;
 import weka.filters.Filter;
@@ -70,6 +68,7 @@ public class DataFilters {
         Instances newData = Filter.useFilter(oldData, wilsonFilter);
         return newData;
     }
+
 
     public void wilsonCondensationFilter() throws Exception {
         long startFilter = System.nanoTime();
