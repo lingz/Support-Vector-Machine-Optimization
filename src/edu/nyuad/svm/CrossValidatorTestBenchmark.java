@@ -198,7 +198,7 @@ public class CrossValidatorTestBenchmark extends Benchmark{
 		int dummy = 0;
 		for (int i = 0; i<reps; i++){
 			CrossValidator.evaluateValidator(test, classifier);
-			dummy |= System.nanoTime();
+			dummy |= System.currentTimeMillis();
 		}
 		return dummy;
 	}

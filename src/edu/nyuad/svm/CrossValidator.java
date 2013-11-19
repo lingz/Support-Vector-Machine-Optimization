@@ -92,7 +92,7 @@ public class CrossValidator {
     }
 
     public static void trainValidator(Classifier classifier, Instances train) throws Exception{
-//            long startTrain = System.nanoTime();
+//            long startTrain = System.currentTimeMillis();
         classifier.buildClassifier(train);
     }
 
@@ -117,15 +117,15 @@ public class CrossValidator {
         } else {
             classifier = getkNNClassifier();
         }
-        long startTrain = System.nanoTime();
+        long startTrain = System.currentTimeMillis();
         trainValidator(classifier, train);
-        trainingTimes[fold] = System.nanoTime() - startTrain;
-        long startTest = System.nanoTime();
+        trainingTimes[fold] = System.currentTimeMillis() - startTrain;
+        long startTest = System.currentTimeMillis();
         Evaluation eval = evaluateValidator(test, classifier);
         if (type.equals("kNN") && fold == 0) {
             output += String.format("Optimal K: %s\n", ((IBk) classifier).getKNN());
         }
-        testingTimes[fold] = System.nanoTime() - startTest;
+        testingTimes[fold] = System.currentTimeMillis() - startTest;
 
         return eval;
     }

@@ -4,12 +4,12 @@
     <list default="true" id="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" name="Default" comment="" />
     <ignored path="SVM.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Main.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1384882626457" ignored="false" />
+    <file path="/Main.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1384889010776" ignored="false" />
     <file path="/Ling.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382792054292" ignored="false" />
     <file path="/kNN.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382815137622" ignored="false" />
     <file path="/Tutorial.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382794183193" ignored="false" />
     <file path="/CrossValidator.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1383719358439" ignored="false" />
-    <file path="/DataFilters.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1384882864847" ignored="false" />
+    <file path="/DataFilters.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1384893916248" ignored="false" />
     <file path="/CrossValidatorBenchmark.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1382824246559" ignored="false" />
     <file path="/standardDeviationEditing.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1383690444916" ignored="false" />
     <file path="/StatsMap.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1384883881656" ignored="false" />
@@ -24,6 +24,7 @@
     <file path="/MergeSort.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1384868985444" ignored="false" />
     <file path="/GaussianSmoothing.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1384884186905" ignored="false" />
     <file path="/GaussianCombined.java" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1384881960350" ignored="false" />
+    <file path="/a.dummy" changelist="4322b9ee-bb02-4659-8fe4-4e38bd4b3ceb" time="1384894088114" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +42,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -78,6 +78,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -90,7 +91,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="40" selection-start="874" selection-end="874" vertical-scroll-proportion="-4.5128207">
+            <state line="16" column="42" selection-start="437" selection-end="437" vertical-scroll-proportion="-1.451613">
               <folding />
             </state>
           </provider>
@@ -99,31 +100,8 @@
       <file leaf-file-name="GaussianCombined.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/GaussianCombined.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="129" column="18" selection-start="5039" selection-end="5045" vertical-scroll-proportion="-3.96">
+            <state line="129" column="18" selection-start="5039" selection-end="5045" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WilsonFilter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/WilsonFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="13" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StatsMap.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/StatsMap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="10" selection-start="1169" selection-end="1169" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#4488#4505#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -131,7 +109,7 @@
       <file leaf-file-name="Mergesort.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/Mergesort.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="38" selection-start="1040" selection-end="1040" vertical-scroll-proportion="-3.08">
+            <state line="32" column="38" selection-start="1040" selection-end="1040" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -146,19 +124,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GaussianFilter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/GaussianFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="34" selection-start="1955" selection-end="2066" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GaussianSmoothing.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/GaussianSmoothing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="125" column="18" selection-start="4840" selection-end="4846" vertical-scroll-proportion="-7.16">
+            <state line="125" column="18" selection-start="4840" selection-end="4846" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -167,16 +136,43 @@
       <file leaf-file-name="DataFilters.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/DataFilters.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="122" column="33" selection-start="4184" selection-end="4190" vertical-scroll-proportion="-7.16">
+            <state line="167" column="0" selection-start="366" selection-end="5856" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Filter.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/dependencies/weka.jar!/weka/filters/Filter.class">
+      <file leaf-file-name="CrossValidator.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="0" selection-start="4304" selection-end="4304" vertical-scroll-proportion="-5.24">
+            <state line="119" column="26" selection-start="3516" selection-end="3516" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CrossValidatorFilterBenchmark.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorFilterBenchmark.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="183" column="21" selection-start="3463" selection-end="3463" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CrossValidatorTestBenchmark.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorTestBenchmark.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="200" column="21" selection-start="4078" selection-end="4078" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CrossValidatorTrainBenchmark.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorTrainBenchmark.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="199" column="21" selection-start="4020" selection-end="4020" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -192,11 +188,7 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidator.java" />
         <option value="$PROJECT_DIR$/src/edu/nyuad/svm/Gaussian.java" />
-        <option value="$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorTrainBenchmark.java" />
-        <option value="$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorFilterBenchmark.java" />
-        <option value="$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorTestBenchmark.java" />
         <option value="$PROJECT_DIR$/src/edu/nyuad/svm/WilsonCondensationFilterNew.java" />
         <option value="$PROJECT_DIR$/src/edu/nyuad/svm/WilsonFilterNew.java" />
         <option value="$PROJECT_DIR$/src/edu/nyuad/svm/WilsonCondensationFilter.java" />
@@ -206,16 +198,19 @@
         <option value="$PROJECT_DIR$/src/edu/nyuad/svm/GaussianCombined.java" />
         <option value="$PROJECT_DIR$/src/edu/nyuad/svm/GaussianSmoothing.java" />
         <option value="$PROJECT_DIR$/src/edu/nyuad/svm/StatsMap.java" />
+        <option value="$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidator.java" />
+        <option value="$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorFilterBenchmark.java" />
+        <option value="$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorTestBenchmark.java" />
+        <option value="$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorTrainBenchmark.java" />
         <option value="$PROJECT_DIR$/src/edu/nyuad/svm/DataFilters.java" />
         <option value="$PROJECT_DIR$/src/edu/nyuad/svm/Main.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-3" />
     <option name="y" value="25" />
-    <option name="width" value="1372" />
-    <option name="height" value="745" />
+    <option name="width" value="1366" />
+    <option name="height" value="743" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -265,6 +260,20 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SVM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SVM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -322,20 +331,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SVM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SVM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -352,9 +347,9 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -506,14 +501,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-3" y="25" width="1372" height="745" extended-state="5" />
+    <frame x="0" y="25" width="1366" height="743" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32888147" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32888147" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283082" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
@@ -524,8 +519,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2496136" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24924242" sideWeight="0.4691152" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5308848" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24885845" sideWeight="0.70184255" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29815745" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="97" y="125" width="1172" height="545" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -603,34 +598,6 @@
         <state line="18" column="0" selection-start="687" selection-end="687" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="44" selection-start="3189" selection-end="3189" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorFilterBenchmark.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="175" column="12" selection-start="3254" selection-end="3254" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorTrainBenchmark.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="195" column="16" selection-start="3868" selection-end="3868" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorTestBenchmark.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="205" column="41" selection-start="4160" selection-end="4160" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/WilsonCondensationFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="13" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0">
@@ -641,9 +608,7 @@
     <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/WilsonFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="13" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -656,7 +621,7 @@
     </entry>
     <entry file="jar://$PROJECT_DIR$/dependencies/weka.jar!/weka/filters/Filter.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="0" selection-start="4304" selection-end="4304" vertical-scroll-proportion="-5.24">
+        <state line="91" column="0" selection-start="4304" selection-end="4304" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -664,16 +629,13 @@
     <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/StatsMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="38" column="10" selection-start="1169" selection-end="1169" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4488#4505#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/GaussianCombined.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="18" selection-start="5039" selection-end="5045" vertical-scroll-proportion="-3.96">
+        <state line="129" column="18" selection-start="5039" selection-end="5045" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -685,30 +647,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/Mergesort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="38" selection-start="1040" selection-end="1040" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/GaussianSmoothing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="18" selection-start="4840" selection-end="4846" vertical-scroll-proportion="-7.16">
+        <state line="125" column="18" selection-start="4840" selection-end="4846" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="26" selection-start="3516" selection-end="3516" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorFilterBenchmark.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="183" column="21" selection-start="3463" selection-end="3463" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorTestBenchmark.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="200" column="21" selection-start="4078" selection-end="4078" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/CrossValidatorTrainBenchmark.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="199" column="21" selection-start="4020" selection-end="4020" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/DataFilters.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="33" selection-start="4184" selection-end="4190" vertical-scroll-proportion="-7.16">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/Mergesort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="38" selection-start="1040" selection-end="1040" vertical-scroll-proportion="-3.08">
+        <state line="167" column="0" selection-start="366" selection-end="5856" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/nyuad/svm/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="40" selection-start="874" selection-end="874" vertical-scroll-proportion="-4.5128207">
+        <state line="16" column="42" selection-start="437" selection-end="437" vertical-scroll-proportion="-1.451613">
           <folding />
         </state>
       </provider>
