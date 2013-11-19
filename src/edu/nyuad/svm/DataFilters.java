@@ -56,6 +56,32 @@ public class DataFilters {
         return newData;
     }
 
+    public void gaussianSmoothingFilter() throws Exception {
+        long startFilter = System.nanoTime();
+        newData = removeGaussianSmoothing();
+        filterTime = System.nanoTime() - startFilter;
+    }
+
+    public Instances removeGaussianSmoothing() throws Exception {
+        GaussianSmoothing gaussianSmoothingFilter = new GaussianSmoothing();
+        gaussianSmoothingFilter.setInputFormat(oldData);
+        Instances newData = Filter.useFilter(oldData, gaussianSmoothingFilter);
+        return newData;
+    }
+
+    public void gaussianCombinedFilter() throws Exception {
+        long startFilter = System.nanoTime();
+        newData = removeGaussianCombined();
+        filterTime = System.nanoTime() - startFilter;
+    }
+
+    public Instances removeGaussianCombined() throws Exception {
+        GaussianCombined gaussianCombinedFilter = new GaussianCombined();
+        gaussianCombinedFilter.setInputFormat(oldData);
+        Instances newData = Filter.useFilter(oldData, gaussianCombinedFilter);
+        return newData;
+    }
+
     public void wilsonFilter() throws Exception {
         long startFilter = System.nanoTime();
         newData = removeWilson();
@@ -100,6 +126,35 @@ public class DataFilters {
         oldData = tempData;
         filterTime = System.nanoTime() - startFilter;
     }
+
+    public void gaussianAndWilsonFilter() throws Exception {
+        Instances tempData = oldData;
+        long startFilter = System.nanoTime();
+        oldData = removeGaussian();
+        newData = removeWilson();
+        oldData = tempData;
+        filterTime = System.nanoTime() - startFilter;
+    }
+
+    public void percentageAndWilsonFilter() throws Exception {
+        Instances tempData = oldData;
+        long startFilter = System.nanoTime();
+        oldData = removePercentage(70);
+        newData = removeWilson();
+        oldData = tempData;
+        filterTime = System.nanoTime() - startFilter;
+    }
+
+    public void percentageAndGaussianSmoothingFilter() throws Exception {
+        Instances tempData = oldData;
+        long startFilter = System.nanoTime();
+        oldData = removePercentage(70);
+        newData = removeGaussianSmoothing();
+        oldData = tempData;
+        filterTime = System.nanoTime() - startFilter;
+    }
+
+
 
 
 
