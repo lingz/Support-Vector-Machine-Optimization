@@ -20,6 +20,10 @@ public class DataFilters {
         oldData = readData(filename);
     }
 
+    public DataFilters(Instances instances) {
+        oldData = instances;
+    }
+
     public Instances getData() {
         return oldData;
     }
@@ -30,9 +34,9 @@ public class DataFilters {
     }
 
     public void percentageFilter(double percentage) throws Exception {
-        long startFilter = System.currentTimeMillis();
+        long startFilter = System.nanoTime();
         newData = removePercentage(percentage);
-        filterTime = System.currentTimeMillis() - startFilter;
+        filterTime = System.nanoTime() - startFilter;
     }
 
     public Instances removePercentage(double percentage) throws Exception{
@@ -44,9 +48,9 @@ public class DataFilters {
     }
 
     public void gaussianFilter() throws Exception {
-        long startFilter = System.currentTimeMillis();
+        long startFilter = System.nanoTime();
         newData = removeGaussian();
-        filterTime = System.currentTimeMillis() - startFilter;
+        filterTime = System.nanoTime() - startFilter;
     }
 
     public Instances removeGaussian() throws Exception {
@@ -57,9 +61,9 @@ public class DataFilters {
     }
 
     public void gaussianSmoothingFilter() throws Exception {
-        long startFilter = System.currentTimeMillis();
+        long startFilter = System.nanoTime();
         newData = removeGaussianSmoothing();
-        filterTime = System.currentTimeMillis() - startFilter;
+        filterTime = System.nanoTime() - startFilter;
     }
 
     public Instances removeGaussianSmoothing() throws Exception {
@@ -70,9 +74,9 @@ public class DataFilters {
     }
 
     public void gaussianCombinedFilter() throws Exception {
-        long startFilter = System.currentTimeMillis();
+        long startFilter = System.nanoTime();
         newData = removeGaussianCombined();
-        filterTime = System.currentTimeMillis() - startFilter;
+        filterTime = System.nanoTime() - startFilter;
     }
 
     public Instances removeGaussianCombined() throws Exception {
@@ -83,9 +87,9 @@ public class DataFilters {
     }
 
     public void wilsonFilter() throws Exception {
-        long startFilter = System.currentTimeMillis();
+        long startFilter = System.nanoTime();
         newData = removeWilson();
-        filterTime = System.currentTimeMillis() - startFilter;
+        filterTime = System.nanoTime() - startFilter;
     }
 
     public Instances removeWilson() throws Exception {
@@ -97,9 +101,9 @@ public class DataFilters {
 
 
     public void wilsonCondensationFilter() throws Exception {
-        long startFilter = System.currentTimeMillis();
+        long startFilter = System.nanoTime();
         newData = removeWilsonCondensation();
-        filterTime = System.currentTimeMillis() - startFilter;
+        filterTime = System.nanoTime() - startFilter;
     }
 
     public Instances removeWilsonCondensation() throws Exception {
@@ -111,47 +115,47 @@ public class DataFilters {
 
     public void wilsonAndWilsonCondensationFilter() throws Exception {
         Instances tempData = oldData;
-        long startFilter = System.currentTimeMillis();
+        long startFilter = System.nanoTime();
         oldData = removeWilson();
         newData = removeWilsonCondensation();
         oldData = tempData;
-        filterTime = System.currentTimeMillis() - startFilter;
+        filterTime = System.nanoTime() - startFilter;
     }
 
     public void wilsonAndGaussianFilter() throws Exception {
         Instances tempData = oldData;
-        long startFilter = System.currentTimeMillis();
+        long startFilter = System.nanoTime();
         oldData = removeWilson();
         newData = removeGaussian();
         oldData = tempData;
-        filterTime = System.currentTimeMillis() - startFilter;
+        filterTime = System.nanoTime() - startFilter;
     }
 
     public void gaussianAndWilsonFilter() throws Exception {
         Instances tempData = oldData;
-        long startFilter = System.currentTimeMillis();
+        long startFilter = System.nanoTime();
         oldData = removeGaussian();
         newData = removeWilson();
         oldData = tempData;
-        filterTime = System.currentTimeMillis() - startFilter;
+        filterTime = System.nanoTime() - startFilter;
     }
 
     public void percentageAndWilsonFilter() throws Exception {
         Instances tempData = oldData;
-        long startFilter = System.currentTimeMillis();
+        long startFilter = System.nanoTime();
         oldData = removePercentage(70);
         newData = removeWilson();
         oldData = tempData;
-        filterTime = System.currentTimeMillis() - startFilter;
+        filterTime = System.nanoTime() - startFilter;
     }
 
     public void percentageAndGaussianSmoothingFilter() throws Exception {
         Instances tempData = oldData;
-        long startFilter = System.currentTimeMillis();
+        long startFilter = System.nanoTime();
         oldData = removePercentage(70);
         newData = removeGaussianSmoothing();
         oldData = tempData;
-        filterTime = System.currentTimeMillis() - startFilter;
+        filterTime = System.nanoTime() - startFilter;
     }
 
 
@@ -159,7 +163,7 @@ public class DataFilters {
 
 
     // gets the data for use with all training methods
-    private Instances readData(String filename) throws Exception{
+    public static Instances readData(String filename) throws Exception{
         Instances data = ConverterUtils.DataSource.read(filename);
         // Set the class as the last attribute  (as written by preprocessor)
         data.setClassIndex(data.numAttributes() - 1);
