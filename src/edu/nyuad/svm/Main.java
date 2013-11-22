@@ -15,7 +15,7 @@ public class Main {
         if (args.length > 0) {
             filepath = args[0];
         } else {
-            filepath = "data/anthony_test.arff";
+            filepath = "data/ling_test.arff";
         }
         if (args.length > 1) {
             outputPath = args[1];

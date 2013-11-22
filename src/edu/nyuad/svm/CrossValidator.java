@@ -144,7 +144,7 @@ public class CrossValidator {
     public Evaluation singleValidate(int fold) throws Exception{
         Classifier classifier;
         DataFilters trainData = filterData(data.trainCV(10, fold));
-        Instances train = trainData.getData();
+        Instances train = trainData.newData;
         Instances test = data.testCV(10, fold);
         filterRemoved[fold] = 1 - (trainData.newData.numInstances() / (double) trainData.oldData.numInstances());
         filterTimes[fold] = trainData.filterTime;
