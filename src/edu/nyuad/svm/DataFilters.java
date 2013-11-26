@@ -158,6 +158,33 @@ public class DataFilters {
         filterTime = System.nanoTime() - startFilter;
     }
 
+    public void gaussianAndGaussianSmoothingFilter() throws Exception {
+        Instances tempData = oldData;
+        long startFilter = System.nanoTime();
+        oldData = removeGaussian();
+        newData = removeGaussianSmoothing();
+        oldData = tempData;
+        filterTime = System.nanoTime() - startFilter;
+    }
+
+    public void gaussianSmoothingAndGaussianFilter() throws Exception {
+        Instances tempData = oldData;
+        long startFilter = System.nanoTime();
+        oldData = removeGaussianSmoothing();
+        newData = removeGaussian();
+        oldData = tempData;
+        filterTime = System.nanoTime() - startFilter;
+    }
+
+    public void gaussianAndWilsonSmoothingFilter() throws Exception {
+        Instances tempData = oldData;
+        long startFilter = System.nanoTime();
+        oldData = removeGaussian();
+        newData = removeWilson();
+        oldData = tempData;
+        filterTime = System.nanoTime() - startFilter;
+    }
+
 
 
 

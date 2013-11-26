@@ -135,6 +135,20 @@ public class CrossValidator {
             dataset.wilsonCondensationFilter();
         } else if (filterStrategy.equals("wilsonAndWilsonCondensation")) {
             dataset.wilsonAndWilsonCondensationFilter();
+        } else if (filterStrategy.equals("gaussianSmoothing")) {
+            dataset.gaussianSmoothingFilter();
+        } else if (filterStrategy.equals("gaussianCombined")) {
+            dataset.gaussianCombinedFilter();
+        } else if (filterStrategy.equals("percentageAndWilson")) {
+            dataset.percentageAndWilsonFilter();
+        } else if (filterStrategy.equals("gaussianAndWilson")) {
+            dataset.gaussianAndWilsonFilter();
+        } else if (filterStrategy.equals("percentageAndGaussianSmoothing")) {
+            dataset.percentageAndGaussianSmoothingFilter();
+        } else if (filterStrategy.equals("gaussianAndGaussianSmoothing")) {
+            dataset.gaussianAndGaussianSmoothingFilter();
+        } else if (filterStrategy.equals("gaussianSmoothingAndGaussian")) {
+            dataset.gaussianSmoothingAndGaussianFilter();
         } else {
             throw new Exception("Stategy " + filterStrategy + " not found");
         }
