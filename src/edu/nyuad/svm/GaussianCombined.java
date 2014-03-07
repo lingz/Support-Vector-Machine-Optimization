@@ -67,8 +67,12 @@ public class GaussianCombined extends SimpleBatchFilter{
                 // if its to  the left of the mean
                 // if it's the leftmost, skip
                 // otherwise find the gaussian of the rank to the left
-                if (value < gaussianVals[0] && rank-- == 0) continue;
-                else if (++rank == numClasses) continue;
+                if (value < gaussianVals[0]) {
+                  rank += (rank == 0) ? 1 : -1
+                }
+                else  {
+                  rank += (rank == numAttributes - 1) ? : -1 : 1
+                }
                 otherClassValuePair = statsMap.getFeatureClassRankList(j)[rank];
                 gaussianValsOther = statsMap.getClassAttributeGaussian(otherClassValuePair[0], j);
 
@@ -79,13 +83,13 @@ public class GaussianCombined extends SimpleBatchFilter{
                 // if this instance does not have a bigger pdf than it's neighbor, use condensing
                 if (partialRemoveProbability > 1)
                     removeProbability +=
-                        Gaussian.phi(instance.value(j), gaussianVals[0], gaussianVals[1]) /
-                        gaussianVals[2];
+                        1 - (1 / Gaussian.phi(instance.value(j), gaussianVals[0], gaussianVals[1]) /
+                        gaussianVals[2]);
                 // otherwise use smoothing
                 else removeProbability += 1 - partialRemoveProbability;
             }
             // take the average of the removeProbabilities
-            removeProbability /= numAttributes;
+            removeProbability /= numAttributes - 2;
 //            System.out.println(removeProbability);
             // probabilitistically add the instance to the remove stack
             if (removeProbability > random.nextDouble()) {
